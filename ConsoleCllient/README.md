@@ -15,3 +15,14 @@ In advance, it might be implemented to save that
 2. Program Shuts down 
 
 
+Loop Structure of Thread 1
+
+cin Handle and Render 
+If Enter key pressed, 
+Read input from console 
+until Enter key pressed again. 
+until that, console render is blocked 
+
+Loop Structure of Thread 2 
+
+Maintain server connection 
