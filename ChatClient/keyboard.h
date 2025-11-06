@@ -48,6 +48,7 @@ namespace Input {
 class Manager {
 private:
 	char _input_buffer[BUFFER_SIZE]; 
+    size_t _input_length; 
 
 private:
     static Manager instance;
@@ -61,6 +62,7 @@ private:
 public:
     inline static Manager& GetInstance() noexcept { return instance; }
     void Update() noexcept; 
+	void Render() noexcept; 
     
 }; // class Manager 
 

@@ -10,6 +10,7 @@ private:
 	Engine& operator=(const Engine&) = delete;
 
 private:
+	alignas(64) 
 	int TickCount = 0; 
 	int FPS_prev = 0; 
 	int FPS_curr = 0; 

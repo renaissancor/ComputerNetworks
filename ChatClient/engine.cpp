@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "engine.h" 
+#include "keyboard.h"
+#include "console.h" 
+#include "Network.h"
 
 // engine.cpp 
 
@@ -18,6 +21,9 @@ Engine::~Engine()
 bool Engine::Initiate() noexcept {
 	QueryPerformanceFrequency(&frequency);
 	QueryPerformanceCounter(&time_init);
+	if (!Console::Manager::GetInstance().Initiate()) return false; 
+
+
 	return true; 
 }
 
@@ -27,10 +33,18 @@ void Engine::Shutdown() noexcept
 
 void Engine::Update() noexcept 
 {
+	Input::Manager::GetInstance().Update(); 
+	Network::Manager::GetInstance().Update(); 
+
 }
 
 void Engine::Render() noexcept 
 {
+	Console::Manager::GetInstance().draw_line(0, ("Tick : " + std::to_string(TickCount)).c_str()); 
+	Console::Manager::GetInstance().draw_line(0, 20, ("FPS (Logic) : " + std::to_string(FPS_prev)).c_str());
+	Network::Manager::GetInstance().Render(); 
+	Input::Manager::GetInstance().Render(); 
+	Console::Manager::GetInstance().Render(); // Render Console 
 }
 
 void Engine::Run() noexcept {
