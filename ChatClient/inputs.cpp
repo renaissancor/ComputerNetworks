@@ -79,7 +79,11 @@ void Inputs::Manager::Update() noexcept
                 if (strcmp(_Inputs_buffer, "exit") == 0) {
                     Engine::GetInstance().StopRunning();
                     return; 
-                }
+                } 
+                else if (strcmp(_Inputs_buffer, "test") == 0) {
+                    Network::Manager::GetInstance().SendDummyData();
+					memset(_Inputs_buffer, 0, BUFFER_SIZE); 
+				}
                 else  if (_Inputs_length > 0)
 					Network::Manager::GetInstance().SendMsg(string(_Inputs_buffer));
 				memset(_Inputs_buffer, 0, BUFFER_SIZE); 

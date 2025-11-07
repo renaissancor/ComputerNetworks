@@ -98,6 +98,34 @@ void Network::Manager::SendMsg(const char* format, ...) noexcept {
 	}
 }
 
+void Network::Manager::SendDummyData() noexcept { 
+	// For Test 
+
+	// const char* dummy_message = "Hello from Chat Client!"; // How to make abouat 4KB Dummy data? 
+	const int msg_length = 1460 * 10; // About 14.6 KB 
+	char buffer[msg_length];
+	memset(buffer, 'A', sizeof(buffer) - 1); 
+
+	const char* data_ptr = buffer;
+	int total_bytes_to_send = msg_length;
+	int total_bytes_sent = 0;
+	
+	while (total_bytes_sent < total_bytes_to_send) {
+		int bytes_sent = ::send(
+			_hSocket,
+			data_ptr + total_bytes_sent,
+			total_bytes_to_send - total_bytes_sent,
+			0
+		);
+		if (bytes_sent == SOCKET_ERROR) {
+			Logger::Manager::GetInstance().Log("[ERROR] Send failed: %d", WSAGetLastError());
+			return;
+		}
+		total_bytes_sent += bytes_sent;
+	}
+}
+
+
 void Network::Manager::RecvMsg(const Log& log) noexcept { 
 
 }

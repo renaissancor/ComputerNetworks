@@ -8,11 +8,11 @@ using std::queue;
 
 namespace Network {
 	
-	constexpr const wchar_t* SERVER_IP = L"127.0.0.1"; // Loopback Address 
+	constexpr const wchar_t* SERVER_IP = L"192.168.20.35"; // Loopback Address 
 	constexpr const unsigned short SERVER_PORT = 9000;
 
-	constexpr const size_t SEND_BUFFER_SIZE = 8192; 
-	constexpr const size_t RECV_BUFFER_SIZE = 8192; 
+	constexpr const size_t SEND_BUFFER_SIZE = 65536; 
+	constexpr const size_t RECV_BUFFER_SIZE = 65536;
 
 	struct Log { // Recv From Server 
 		long long id = 0; // Unique Log ID 
@@ -48,6 +48,7 @@ namespace Network {
 
 		void SendMsg(const string& msg) noexcept; // Send Message to Server, now just store in pending logs 
 		void SendMsg(const char* format, ...) noexcept; // Send Formatted Message to Server 
+		void SendDummyData() noexcept; // For Test 
 		void RecvMsg(const Log& log) noexcept; // Receive Log from Server 
 
 		void Update() noexcept; 

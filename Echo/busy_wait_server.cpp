@@ -2,7 +2,7 @@
 // Server Echo 
 using namespace std;
 
-constexpr const wchar_t* SERVER_IP = L"127.0.0.1"; // Loopback Address 
+constexpr const wchar_t* SERVER_IP = L"192.168.0.1"; // Loopback Address 
 constexpr const unsigned short SERVER_PORT = 9000;
 
 struct ClientInfo {
@@ -35,8 +35,8 @@ int main()
 	SOCKADDR_IN server_addr = { 0 };
 	server_addr.sin_family = AF_INET;
 	server_addr.sin_port = htons(SERVER_PORT);
-	// server_addr.sin_addr.S_un.S_addr = INADDR_ANY; // Allow All IP 
-	InetPton(AF_INET, SERVER_IP, &server_addr.sin_addr); // Only SERVER_IP 
+	server_addr.sin_addr.S_un.S_addr = INADDR_ANY; // Allow All IP 
+	// InetPton(AF_INET, SERVER_IP, &server_addr.sin_addr); // Only SERVER_IP 
 
 	if (::bind(hListenSocket, (SOCKADDR*)&server_addr, sizeof(server_addr)) == SOCKET_ERROR)
 	{
@@ -57,8 +57,8 @@ int main()
 	SOCKADDR_IN client_addr = { 0 };
 	int addr_len = sizeof(client_addr);
 	vector<ClientInfo> clients_info;
-	char recv_buf[256] = { 0 };
-	char send_buf[256] = { 0 };
+	char recv_buf[65536] = { 0 };
+	char send_buf[65536] = { 0 };
 
 	u_long mode = 1;
 	ioctlsocket(hListenSocket, FIONBIO, &mode); // Non-Blocking Mode 

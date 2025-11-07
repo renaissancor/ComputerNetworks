@@ -15,16 +15,18 @@ Logger::Manager::~Manager()
 {}
 
 bool Logger::Manager::Initiate() noexcept {
-	wchar_t log_file_name[64]; 
-	wcscpy_s(log_file_name, LOG_FILE_NAME); 
-	// Get Port Number to save log file uniquely 
-	// How ? 
-
-	wcscpy_s(log_file_name + wcslen(LOG_FILE_NAME), 8, L".txt");
-
+	DWORD pid = GetCurrentProcessId(); 
+	wchar_t log_file_name[128];
+	swprintf_s(log_file_name, _countof(log_file_name),
+		L"%s_%lu.txt",
+		LOG_FILE_NAME,
+		pid);
+	// unsigned short port = Network::Manager::GetInstance().GetLocalPort(); 
+	// swprintf_s(log_file_name, _countof(log_file_name), 
+	//            L"%s_%hu.txt", LOG_FILE_NAME, port);
 
 	_hFile = CreateFile(
-		LOG_FILE_NAME,
+		log_file_name,
 		GENERIC_READ | GENERIC_WRITE,		// We want to read and write to the file. 
 		FILE_SHARE_READ,					// Allow other processes to read the file while we have it open. 
 		NULL,								// Default security attributes. 
