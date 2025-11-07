@@ -1,4 +1,5 @@
 #pragma once
+// stdafx.h 
 
 // Upper layer of Windows 
 #include <winsock2.h>

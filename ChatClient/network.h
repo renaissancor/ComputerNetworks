@@ -8,6 +8,12 @@ using std::queue;
 
 namespace Network {
 	
+	constexpr const wchar_t* SERVER_IP = L"127.0.0.1"; // Loopback Address 
+	constexpr const unsigned short SERVER_PORT = 9000;
+
+	constexpr const size_t SEND_BUFFER_SIZE = 8192; 
+	constexpr const size_t RECV_BUFFER_SIZE = 8192; 
+
 	struct Log { // Recv From Server 
 		long long id = 0; // Unique Log ID 
 		long long timestamp = 0; 
@@ -26,21 +32,26 @@ namespace Network {
 
 	private:
 		alignas(64)
-		vector<Log> logs; // Replace to Memory Mapped File later 
-		queue<Log> server_data_dummy; // Logs waiting to be written to main log storage 
+		WSADATA _wsa; 
+		SOCKET _hSocket; 
+		SOCKADDR_IN _server_addr;
 
 	private:
 		Manager();
 		~Manager();
 	public:
 		inline static Manager& GetInstance() noexcept { return instance; } 
-		inline const vector<Log>& GetLogs() const noexcept { return logs; }
+		inline const SOCKET GetSocket() const noexcept { return _hSocket; } 
+
+		bool Initiate() noexcept;
+		void Shutdown() noexcept;
 
 		void SendMsg(const string& msg) noexcept; // Send Message to Server, now just store in pending logs 
-		void RecvLog(const Log& log) noexcept; // Receive Log from Server 
+		void SendMsg(const char* format, ...) noexcept; // Send Formatted Message to Server 
+		void RecvMsg(const Log& log) noexcept; // Receive Log from Server 
 
 		void Update() noexcept; 
 		void Render() noexcept; 
 
-	};
+	}; // class Manager 
 } // namespace Records

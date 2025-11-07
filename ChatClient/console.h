@@ -45,6 +45,7 @@ namespace Console {
 			_buffer_write[y * _width + x] = ch;
 			LeaveCriticalSection(&_cs);
 		}
+
 		inline void draw_line(short y, const char* str) noexcept {
 			if (y < 0 || y >= _height) return;
 			size_t index = static_cast<size_t>(y) * _width; 
@@ -62,6 +63,17 @@ namespace Console {
 			memcpy_s(&_buffer_write[index], _width - x, str, len); 
 			if (len < static_cast<size_t>(_width - x))
 				memset(&_buffer_write[index + len], ' ', _width - x - len);
+		}
+
+		inline void draw_line_cut(short y, const char* str, size_t max_len) noexcept {
+			if (y < 0 || y >= _height) return;
+			size_t index = static_cast<size_t>(y) * _width;
+			size_t len = min(strlen(str), max_len);
+			len = min(len, static_cast<size_t>(_width));
+			// memcpy(&_buffer_write[index], str, len);
+			memcpy_s(&_buffer_write[index], _width, str, len); 
+			if (len < static_cast<size_t>(_width))
+				memset(&_buffer_write[index + len], ' ', _width - len);
 		}
 
 		inline void clear_line(short y) noexcept {

@@ -84,9 +84,10 @@ int main()
 
 				for (auto other_client = clients_info.begin();
 					other_client != clients_info.end(); ++other_client) {
-					if (other_client->hSocket != client->hSocket) {
-						::send(other_client->hSocket, send_buf, recv_status, 0);
-					}
+					// if (other_client->hSocket != client->hSocket) 
+					::send(other_client->hSocket, send_buf, recv_status, 0);
+						
+					
 				}
 				fprintf_s(stdout, "%.*s\n", recv_status, recv_buf);
 				memset(recv_buf, 0, sizeof(recv_buf));

@@ -21,13 +21,16 @@
     <ClCompile Include="engine.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="keyboard.cpp">
+    <ClCompile Include="inputs.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="console.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="network.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,13 +41,16 @@
     <ClInclude Include="engine.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="keyboard.h">
+    <ClInclude Include="inputs.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="console.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="network.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

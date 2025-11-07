@@ -2,7 +2,7 @@
 
 class Engine {
 private:
-	static constexpr const double FRAMES_PER_SECOND = 60.0; 
+	static constexpr const double FRAMES_PER_SECOND = 100.0; 
 	static Engine instance;
 	Engine();
 	~Engine();
@@ -10,6 +10,7 @@ private:
 	Engine& operator=(const Engine&) = delete;
 
 private:
+	volatile LONG running = 2'147'483'647; // For Thread Control 
 	alignas(64) 
 	int TickCount = 0; 
 	int FPS_prev = 0; 
@@ -21,8 +22,12 @@ private:
 	LARGE_INTEGER time_init; 
 	LARGE_INTEGER frequency; 
 
+	// Thread 
+	HANDLE hThread = INVALID_HANDLE_VALUE; 
+
 public:
 	inline static Engine& GetInstance() noexcept { return instance; }
+	inline void StopRunning() noexcept { InterlockedExchange(&running, 0); }
 	inline const double GetTime() const noexcept {
 		LARGE_INTEGER current;
 		QueryPerformanceCounter(&current);
@@ -36,5 +41,7 @@ public:
 	void Shutdown() noexcept;
 	void Update() noexcept;
 	void Render() noexcept;
-	void Run() noexcept; 
+	void RunMainThread() noexcept; 
+	void RunRecvThread() noexcept; 
+
 };

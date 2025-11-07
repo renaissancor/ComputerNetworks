@@ -7,7 +7,7 @@ using std::wstring;
 
 namespace Log {
 
-	constexpr const WCHAR* LOG_FILE_NAME = L"chat_log.dat";
+	constexpr const WCHAR* LOG_FILE_NAME = L"chat_log.txt";
 	constexpr const size_t PAGE_SIZE_BYTES = 65536; // 64 KB 
 	constexpr const size_t FILE_SIZE_BYTES = PAGE_SIZE_BYTES * 100; // 6400 KB, 6.4 MB  
 	constexpr const size_t ONE_LINE_MAX_LENGTH = 128; // whcar_t per line 

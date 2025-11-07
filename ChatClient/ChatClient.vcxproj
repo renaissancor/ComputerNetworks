@@ -135,14 +135,16 @@
   <ItemGroup>
     <ClCompile Include="console.cpp" />
     <ClCompile Include="engine.cpp" />
-    <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="inputs.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="network.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h" />
     <ClInclude Include="engine.h" />
-    <ClInclude Include="keyboard.h" />
+    <ClInclude Include="inputs.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="network.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
