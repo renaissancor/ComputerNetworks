@@ -102,7 +102,7 @@ void Network::Manager::SendDummyData() noexcept {
 	// For Test 
 
 	// const char* dummy_message = "Hello from Chat Client!"; // How to make abouat 4KB Dummy data? 
-	const int msg_length = 1460 * 10; // About 14.6 KB 
+	const int msg_length = 146000; // 65536 * 1000; // 64MB // 1460 * 1000; // About 14.6 KB 
 	char buffer[msg_length];
 	memset(buffer, 'A', sizeof(buffer) - 1); 
 

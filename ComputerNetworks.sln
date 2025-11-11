@@ -5,8 +5,6 @@ VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BusyWaitServer", "Echo\Echo.vcxproj", "{D1A83147-EF98-4F33-8752-E749EBCA9558}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ConsoleCllient", "ConsoleCllient\ConsoleCllient.vcxproj", "{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChatClient", "ChatClient\ChatClient.vcxproj", "{0FADE0ED-0EAA-41A7-86CB-451976E0E165}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImGuiChat", "ImGuiChat\ImGuiChat.vcxproj", "{A206F160-01BD-47CD-A188-141A1BAB44FA}"
@@ -14,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NagleClient", "NagleClient\NagleClient.vcxproj", "{6895B95E-6C14-418D-875C-79403F6AC8E7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NagleServer", "NagleServer\NagleServer.vcxproj", "{318F429D-22B7-4365-A1F7-60F6D83287DA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "edu_IOCP", "edu_IOCP\edu_IOCP.vcxproj", "{5766AD41-F102-4670-8713-F2544C873FDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,6 @@ Global
 		{D1A83147-EF98-4F33-8752-E749EBCA9558}.Release|x64.Build.0 = Release|x64
 		{D1A83147-EF98-4F33-8752-E749EBCA9558}.Release|x86.ActiveCfg = Release|Win32
 		{D1A83147-EF98-4F33-8752-E749EBCA9558}.Release|x86.Build.0 = Release|Win32
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Debug|x64.ActiveCfg = Debug|x64
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Debug|x64.Build.0 = Debug|x64
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Debug|x86.ActiveCfg = Debug|Win32
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Debug|x86.Build.0 = Debug|Win32
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Release|x64.ActiveCfg = Release|x64
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Release|x64.Build.0 = Release|x64
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Release|x86.ActiveCfg = Release|Win32
-		{F2F90AD8-A476-4F8A-BF1F-D03833757AD5}.Release|x86.Build.0 = Release|Win32
 		{0FADE0ED-0EAA-41A7-86CB-451976E0E165}.Debug|x64.ActiveCfg = Debug|x64
 		{0FADE0ED-0EAA-41A7-86CB-451976E0E165}.Debug|x64.Build.0 = Debug|x64
 		{0FADE0ED-0EAA-41A7-86CB-451976E0E165}.Debug|x86.ActiveCfg = Debug|Win32
@@ -71,6 +63,14 @@ Global
 		{318F429D-22B7-4365-A1F7-60F6D83287DA}.Release|x64.Build.0 = Release|x64
 		{318F429D-22B7-4365-A1F7-60F6D83287DA}.Release|x86.ActiveCfg = Release|Win32
 		{318F429D-22B7-4365-A1F7-60F6D83287DA}.Release|x86.Build.0 = Release|Win32
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Debug|x64.ActiveCfg = Debug|x64
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Debug|x64.Build.0 = Debug|x64
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Debug|x86.ActiveCfg = Debug|Win32
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Debug|x86.Build.0 = Debug|Win32
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Release|x64.ActiveCfg = Release|x64
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Release|x64.Build.0 = Release|x64
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Release|x86.ActiveCfg = Release|Win32
+		{5766AD41-F102-4670-8713-F2544C873FDB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
