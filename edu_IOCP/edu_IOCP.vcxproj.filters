@@ -18,10 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="IOCP.cpp">
+    <ClCompile Include="IOCPServer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="EchoServer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientInfo.cpp">
       <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,13 +32,19 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header</Filter>
     </ClInclude>
-    <ClInclude Include="IOCP.h">
+    <ClInclude Include="IOCPServer.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>Header</Filter>
     </ClInclude>
     <ClInclude Include="EchoServer.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInfo.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Packet.h">
       <Filter>Header</Filter>
     </ClInclude>
   </ItemGroup>

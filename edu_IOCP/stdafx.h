@@ -1,4 +1,5 @@
 #pragma once
+
 #pragma comment(lib, "ws2_32.lib") // Winsock Library
 #pragma comment(lib, "winmm.lib")  // TimeBeginPeriod, TimeEndPeriod 
 // stdafx.h 
@@ -13,12 +14,18 @@
 // After Windows.h 
 #include <timeapi.h>
 
-// C/C++ Standard Runtime Library 
+// C/C++ Standard Runtime Library System 
+#include <atomic>
 #include <thread>
+
+// C/C++ Standard Runtime Library 
 #include <iostream>
 #include <vector>
 #include <string> 
 #include <queue>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 // Win32 Multithreading 
 #include <process.h> 
