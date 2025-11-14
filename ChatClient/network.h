@@ -8,7 +8,7 @@ using std::queue;
 
 namespace Network {
 	
-	constexpr const wchar_t* SERVER_IP = L"192.168.20.40"; // Loopback Address 
+	constexpr const wchar_t* SERVER_IP = L"127.0.0.1"; // Loopback Address 
 	constexpr const unsigned short SERVER_PORT = 9000;
 
 	constexpr const size_t SEND_BUFFER_SIZE = 65536; 

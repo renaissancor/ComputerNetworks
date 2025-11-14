@@ -28,11 +28,13 @@ bool Engine::Initiate() noexcept {
 		return false;
 	}
 	if (!Console::Manager::GetInstance().Initiate()) {
+		fprintf_s(stderr, "Console Manager Initiation Failed!\n");
 		Logger::Manager::GetInstance().Log("Console Manager Initiation Failed!");
 		Logger::Manager::GetInstance().Shutdown(); 
 		return false;
 	}
 	if (!Network::Manager::GetInstance().Initiate()) {
+		fprintf_s(stderr, "Network Manager Initiation Failed!\n");
 		Logger::Manager::GetInstance().Log("Network Manager Initiation Failed!");
 		Console::Manager::GetInstance().Shutdown();
 		Logger::Manager::GetInstance().Shutdown();

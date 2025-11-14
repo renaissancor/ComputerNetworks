@@ -1,13 +1,12 @@
 ﻿#include "stdafx.h" 
 
 using namespace std; 
-
-// constexpr const wchar_t* SERVER_IP = L"106.245.38.108";
 constexpr const wchar_t* SERVER_IP = L"127.0.0.1";
+// constexpr const wchar_t* SERVER_IP = L"192.168.20.29";
 constexpr const wchar_t* USER_NAME = L"StephenJHPark";
 constexpr const wchar_t* FILE_NAME = L"JHPark_Photo.jpg";
 constexpr const unsigned short SERVER_PORT = 10010; 
-constexpr const unsigned int PACKET_CODE = 0x12345678; 
+constexpr const unsigned int PACKET_CODE = 0x11223344;
 
 # pragma pack(push, 1)
 struct PacketHeader {

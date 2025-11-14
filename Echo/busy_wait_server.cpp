@@ -1,5 +1,5 @@
 ﻿#include "stdafx.h"
-// Server Echo 
+// Busy Wait Server Example 
 using namespace std;
 
 constexpr const wchar_t* SERVER_IP = L"192.168.0.1"; // Loopback Address 
@@ -57,8 +57,9 @@ int main()
 	SOCKADDR_IN client_addr = { 0 };
 	int addr_len = sizeof(client_addr);
 	vector<ClientInfo> clients_info;
-	char recv_buf[65536] = { 0 };
-	char send_buf[65536] = { 0 };
+
+	char* recv_buf = new char[65536];
+	char* send_buf = new char[65536];
 
 	u_long mode = 1;
 	ioctlsocket(hListenSocket, FIONBIO, &mode); // Non-Blocking Mode 
@@ -118,6 +119,9 @@ int main()
 
 	::closesocket(hListenSocket);
 	::WSACleanup();
+
+	delete[] recv_buf;
+	delete[] send_buf;
 
 	return 0;
 }
