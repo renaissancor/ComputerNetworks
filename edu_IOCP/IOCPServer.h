@@ -4,6 +4,19 @@
 
 class IOCompletionPort
 {
+private:
+	std::vector<ClientInfo> _arrClientInfos;
+	SOCKET _socketListen = INVALID_SOCKET;
+	int _countClient = 0;
+
+	std::vector<std::thread> _arrIOWorkerThreads;
+	std::thread _acceptThread;
+
+	HANDLE _iocpHandle = INVALID_HANDLE_VALUE;
+	volatile bool _isWorkerThreadRunning = true;
+	volatile bool _isAcceptThreadRunning = true;
+	char _socketBuffer[MAX_SOCKBUF];
+
 public:
 	IOCompletionPort(void) {}
 	~IOCompletionPort(void) {
@@ -220,16 +233,4 @@ private:
 		OnClientDisconnect(clientIndex);
 	}
 
-private: 
-	std::vector<ClientInfo> _arrClientInfos; 
-	SOCKET _socketListen = INVALID_SOCKET; 
-	int _countClient = 0; 
-
-	std::vector<std::thread> _arrIOWorkerThreads;
-	std::thread _acceptThread; 
-
-	HANDLE _iocpHandle = INVALID_HANDLE_VALUE;
-	volatile bool _isWorkerThreadRunning = true; 
-	volatile bool _isAcceptThreadRunning = true;
-	char _socketBuffer[MAX_SOCKBUF];
 }; 

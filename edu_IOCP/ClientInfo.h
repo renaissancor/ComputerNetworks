@@ -79,7 +79,7 @@ public:
 
 	// Must be called in one thread 
 	bool SendData(const UINT32 dataSize, const char* pData) {
-		auto sendOverlappedEx = new OverlappedEx(); 
+		OverlappedEx* sendOverlappedEx = new OverlappedEx();
 		ZeroMemory(sendOverlappedEx, sizeof(OverlappedEx)); 
 		sendOverlappedEx->_ioOperation = IOOperation::SEND;
 		sendOverlappedEx->_wsaBuffer.len = dataSize;
@@ -105,7 +105,7 @@ public:
 		return true; 
 	}
 
-	void SendCompleted(const UINT32 dataSize) const {
+	void SendCompleted(const uint32_t dataSize) const {
 		// Nothing to do yet 
 		fprintf_s(stdout, "[Client %d] Sent %d bytes.\n", _index, dataSize); 
 	}
