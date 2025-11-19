@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Networks {
-	constexpr const wchar_t* SERVER_IP = L"192.168.20.33"; // For Convenience  
+	// constexpr const wchar_t* SERVER_IP = L"192.168.20.33"; // For Convenience  
 	constexpr const u_short SERVER_PORT = 3000;
 
 	constexpr const int RECV_BUFFER_SIZE = 4096; 

@@ -46,12 +46,12 @@ void Engine::Render() const noexcept {
 
 	Gameplay::Manager::GetInstance().Render(); 
 	char buffer[80];
-	sprintf_s(buffer, "       Tick : %d", TickCount);
+	sprintf_s(buffer, "     Tick : %10d", TickCount);
 	Console::Manager::GetInstance().DrawLine(24, 0, buffer);
 	sprintf_s(buffer, "FPS (Logic) : %d", FPS_prev);
-	Console::Manager::GetInstance().DrawLine(24, 20, buffer);
+	Console::Manager::GetInstance().DrawLine(24, 30, buffer);
 	sprintf_s(buffer, "FPS (Render) : %d", FPS_render_prev);
-	Console::Manager::GetInstance().DrawLine(24, 40, buffer);	
+	Console::Manager::GetInstance().DrawLine(24, 50, buffer);	
 	
 	Console::Manager::GetInstance().Display();
 }

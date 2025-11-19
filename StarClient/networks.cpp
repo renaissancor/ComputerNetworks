@@ -16,9 +16,9 @@ Networks::Manager::~Manager()
 
 bool Networks::Manager::Initialize() noexcept {
 	fwprintf_s(stdout, L"Enter Server IP Address : ");
-	// fwscanf_s(stdin, L"%s", _ipAddr, INET_ADDRSTRLEN); 
-	fwprintf_s(stdout, L"%s\n", _ipAddr); 
-	wcscpy_s(_ipAddr, SERVER_IP); // For Convenience 
+	fwscanf_s(stdin, L"%s", _ipAddr, INET_ADDRSTRLEN); 
+	// fwprintf_s(stdout, L"%s\n", _ipAddr); 
+	// wcscpy_s(_ipAddr, SERVER_IP); // For Convenience 
 	_results._InetPtonWResult = ::InetPtonW(AF_INET, _ipAddr, &_serverAddr.sin_addr);
 	if (_results._InetPtonWResult != 1) {
 		fwprintf_s(stderr, L"Invalid IP Address Format!\n");

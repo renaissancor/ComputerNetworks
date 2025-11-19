@@ -2,7 +2,7 @@
 
 namespace Gameplay {
 	constexpr const int GAME_WIDTH  = 80;
-	constexpr const int GAME_HEIGHT = 23;
+	constexpr const int GAME_HEIGHT = 24;
 
 	using std::unique_ptr; 
 	using std::list; 

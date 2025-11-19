@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SelectServer", "SelectServe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StarClient", "StarClient\StarClient.vcxproj", "{6A8B079B-C235-4D67-8A67-2312143B29B5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StarServer", "StarServer\StarServer.vcxproj", "{FE8351E2-83BA-4ED6-9180-9A4370965CAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -111,6 +113,14 @@ Global
 		{6A8B079B-C235-4D67-8A67-2312143B29B5}.Release|x64.Build.0 = Release|x64
 		{6A8B079B-C235-4D67-8A67-2312143B29B5}.Release|x86.ActiveCfg = Release|Win32
 		{6A8B079B-C235-4D67-8A67-2312143B29B5}.Release|x86.Build.0 = Release|Win32
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Debug|x64.ActiveCfg = Debug|x64
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Debug|x64.Build.0 = Debug|x64
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Debug|x86.ActiveCfg = Debug|Win32
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Debug|x86.Build.0 = Debug|Win32
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Release|x64.ActiveCfg = Release|x64
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Release|x64.Build.0 = Release|x64
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Release|x86.ActiveCfg = Release|Win32
+		{FE8351E2-83BA-4ED6-9180-9A4370965CAB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
