@@ -102,9 +102,7 @@ int Network::Manager::AcceptNewClient() noexcept {
 		::ioctlsocket(hClient, FIONBIO, &nonBlockingMode);
 
 		Game::Manager::GetInstance().EnqueueChange(
-			Game::ChangeType::LOGIN, sessionID, 0, 0);
-		Game::Manager::GetInstance().EnqueueChange(
-			Game::ChangeType::CREATE, sessionID, 0, 0);
+			Game::ChangeType::LOGIN, sessionID, 0, 0 );
 	}; 
 }
 
@@ -152,7 +150,7 @@ void Network::Manager::RecvStream() noexcept {
 						reinterpret_cast<Protocol::Packet*>(session.recvBuffer);
 					Game::Manager::GetInstance().EnqueueChange(
 						static_cast<int>(packet->type),
-						packet->id,
+						it->first, 
 						static_cast<int>(packet->x),
 						static_cast<int>(packet->y)
 					);
@@ -173,15 +171,19 @@ void Network::Manager::RecvStream() noexcept {
 				{}
 				else {
 					_WSAGetLastErrorResult = wsaError; 
+					unsigned int disconnectedSessionID = it->first; 
 					it = HandleDisconnection(it);
 					--selectCount;
+					Game::Manager::GetInstance().EnqueueChange(
+						Game::ChangeType::REMOVE, 
+						disconnectedSessionID, 0, 0);
 					continue; 
 				}
 			} // if bytesReceived > 0 else end 
 			--selectCount;
 		} // if FD_ISSET end 
 		++it; 
-		if (--selectCount <= 0) break; 
+		if (selectCount <= 0) break; 
 	}
 }
 
@@ -190,33 +192,36 @@ void Network::Manager::SendStream() noexcept {
 		const SendChange& change = _sendStreams.front();
 		Protocol::Packet packet = {
 			static_cast<uint32_t>(change.type),
-			change.id,
+			change.id_content, 
 			static_cast<uint32_t>(change.x),
 			static_cast<uint32_t>(change.y)
 		};
-		auto sessionIt = _sessions.find(change.id);
+		auto sessionIt = _sessions.find(change.id_target);
 		if (sessionIt != _sessions.end()) {
 			Session& session = sessionIt->second;
 			int bytesSent = ::send(session.hSocket, 
 				reinterpret_cast<const char*>(&packet), sizeof(Protocol::Packet), 0);
 			if (bytesSent == SOCKET_ERROR) {
+				Game::Manager::GetInstance().EnqueueChange(
+					Game::ChangeType::REMOVE,
+					change.id_target, 0, 0);
 				int wsaError = WSAGetLastError();
 				_WSAGetLastErrorResult = wsaError; 
-				HandleDisconnection(sessionIt);
+				auto nextIt = HandleDisconnection(sessionIt); 
 			}
 		}
 		_sendStreams.pop();
 	}
 }
 
-void Network::Unicast(const int type, const unsigned int id,
+void Network::Unicast(const int type, const unsigned int target_id, const unsigned int content_id,
 	const int x, const int y) noexcept {
-	Manager::GetInstance().EnqueueUnicast(type, id, x, y); 
+	Manager::GetInstance().EnqueueUnicast(type, target_id, content_id, x, y); 
 }
 
-void Network::Broadcast(const int type, const unsigned int id,
+void Network::Broadcast(const int type, const unsigned int source_id, const unsigned int content_id,
 	const int x, const int y) noexcept {
-	Manager::GetInstance().EnqueueBroadcast(type, id, x, y); 
+	Manager::GetInstance().EnqueueBroadcast(type, source_id, content_id, x, y);
 }
 
 

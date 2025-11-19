@@ -18,8 +18,6 @@ namespace Game {
 		int y = 0;
 	};
 
-	
-
 	struct Player {
 		unsigned int id = 0;
 		int x = 0;

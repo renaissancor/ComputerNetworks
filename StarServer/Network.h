@@ -9,7 +9,8 @@ namespace Network {
 
 	struct SendChange {
 		int type = 0;
-		unsigned int id = 0;
+		unsigned int id_target = 0;
+		unsigned int id_content = 0; 
 		int x = 0;
 		int y = 0;
 	};
@@ -20,8 +21,6 @@ namespace Network {
 		int recvBufferOffset = 0; 
 		char recvBuffer[RECV_BUFFER_SIZE] = { 0 }; 
 	};
-
-	
 
 	class Manager {
 	private:
@@ -57,16 +56,16 @@ namespace Network {
 			return instance;
 		}
 
-		inline void EnqueueUnicast (const int type, const unsigned int id,
+		inline void EnqueueUnicast(const int type, const unsigned int target_id, const unsigned int content_id,
 			const int x, const int y) noexcept {
-			_sendStreams.push(SendChange{ type, id, x, y });
+			_sendStreams.push(SendChange{ type, target_id, content_id, x, y });
 		}
 
-		inline void EnqueueBroadcast(const int type, const unsigned int id,
+		inline void EnqueueBroadcast(const int type, const unsigned int source_id, const unsigned int content_id,
 			const int x, const int y) noexcept {
 			for (auto& sessionPair : _sessions) {
-				if (sessionPair.first == id) continue;
-				_sendStreams.push(SendChange{ type, id, x, y });
+				if (sessionPair.first == source_id) continue;
+				_sendStreams.push(SendChange{ type, sessionPair.first, content_id, x, y });
 			}
 		}
 
@@ -77,8 +76,8 @@ namespace Network {
 
 	}; // class Manager 
 
-	void Unicast(const int type, const unsigned int id,
+	void Unicast(const int type, const unsigned int target_id, const unsigned int content_id,
 		const int x, const int y) noexcept;
-	void Broadcast(const int type, const unsigned int id,
+	void Broadcast(const int type, const unsigned int source_id, const unsigned int content_id,
 		const int x, const int y) noexcept;
 }

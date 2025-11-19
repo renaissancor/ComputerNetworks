@@ -14,20 +14,24 @@ void Game::Manager::Update() noexcept {
 		if (stream.type == 0) {
 			// LOGIN 
 			stream.x = rand() % GAME_WIDTH; 
-			stream.y = rand() % GAME_HEIGHT; 
+			stream.y = rand() % GAME_HEIGHT;
 			_players.emplace(stream.id, 
 				std::make_unique<Player>(stream.id, stream.x, stream.y)); 
-			Network::Unicast(0, stream.id, stream.x, stream.y);
+			Network::Unicast(LOGIN, stream.id, stream.id, stream.x, stream.y);
+			for (const auto& pair : _players) {
+				const Player& existingPlayer = *(pair.second);
+				Network::Unicast(CREATE, stream.id, existingPlayer.id, existingPlayer.x, existingPlayer.y);
+			}
+			Network::Broadcast(CREATE, stream.id, stream.id, stream.x, stream.y);
 		}
 		else if (stream.type == 1) {
-			// CREATE 
-			Network::Unicast(1, stream.id, stream.x, stream.y); 
-			Network::Broadcast(1, stream.id, stream.x, stream.y);
+			// CREATE, ERROR CASE 
+			
 		}
 		else if (stream.type == 2) {
 			// REMOVE 
 			_players.erase(stream.id); 
-			Network::Broadcast(2, stream.id, stream.x, stream.y); 
+			Network::Broadcast(2, stream.id, stream.id, stream.x, stream.y); 
 		}
 		else if (stream.type == 3) {
 			// MOVE 
@@ -43,7 +47,11 @@ void Game::Manager::Update() noexcept {
 					playerIt->second->y = 0; 
 				else if (playerIt->second->y >= GAME_HEIGHT) 
 					playerIt->second->y = GAME_HEIGHT - 1;
-				Network::Broadcast(3, stream.id, stream.x, stream.y); 
+				if (playerIt->second->x != stream.x || playerIt->second->y != stream.y) {
+					stream.x = playerIt->second->x;
+					stream.y = playerIt->second->y;
+				}
+				Network::Broadcast(3, stream.id, stream.id, stream.x, stream.y); 
 			}
 		}
 		_recvStreams.pop();
