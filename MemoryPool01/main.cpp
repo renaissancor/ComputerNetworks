@@ -117,15 +117,17 @@ static void test5() {
     std::cout << "Stress test completed.\n";
 }
 
-
+static void TestMemoryPool() {
+    test1();
+    test2();
+    test3();
+    test4();
+    test5();
+}
 
 int main()
 {
-    test1();
-    test2(); 
-    test3();
-    test4(); 
-    test5(); 
+    TestMemoryPool(); 
 
     return 0;
 }

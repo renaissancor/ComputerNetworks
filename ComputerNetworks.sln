@@ -27,7 +27,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RoomSearch", "RoomSearch\Ro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SocketSetup", "SocketSetup\SocketSetup.vcxproj", "{EA43C8E1-8E92-49D5-8556-539593039182}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool01", "MemoryPool01\MemoryPool01.vcxproj", "{D5A519E8-272C-4BFE-BA63-6BFEA906C4CC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool1", "MemoryPool01\MemoryPool01.vcxproj", "{D5A519E8-272C-4BFE-BA63-6BFEA906C4CC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemoryPool2", "MemoryPool2\MemoryPool2.vcxproj", "{660293DA-2620-45D5-887F-38C574E294D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +143,14 @@ Global
 		{D5A519E8-272C-4BFE-BA63-6BFEA906C4CC}.Release|x64.Build.0 = Release|x64
 		{D5A519E8-272C-4BFE-BA63-6BFEA906C4CC}.Release|x86.ActiveCfg = Release|Win32
 		{D5A519E8-272C-4BFE-BA63-6BFEA906C4CC}.Release|x86.Build.0 = Release|Win32
+		{660293DA-2620-45D5-887F-38C574E294D7}.Debug|x64.ActiveCfg = Debug|x64
+		{660293DA-2620-45D5-887F-38C574E294D7}.Debug|x64.Build.0 = Debug|x64
+		{660293DA-2620-45D5-887F-38C574E294D7}.Debug|x86.ActiveCfg = Debug|Win32
+		{660293DA-2620-45D5-887F-38C574E294D7}.Debug|x86.Build.0 = Debug|Win32
+		{660293DA-2620-45D5-887F-38C574E294D7}.Release|x64.ActiveCfg = Release|x64
+		{660293DA-2620-45D5-887F-38C574E294D7}.Release|x64.Build.0 = Release|x64
+		{660293DA-2620-45D5-887F-38C574E294D7}.Release|x86.ActiveCfg = Release|Win32
+		{660293DA-2620-45D5-887F-38C574E294D7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

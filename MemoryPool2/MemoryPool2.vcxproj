@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d5a519e8-272c-4bfe-ba63-6bfea906c4cc}</ProjectGuid>
-    <RootNamespace>MemoryPool01</RootNamespace>
+    <ProjectGuid>{660293da-2620-45d5-887f-38c574e294d7}</ProjectGuid>
+    <RootNamespace>MemoryPool2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>MemoryPool1</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -124,11 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MemoryPool.h" />
-    <ClInclude Include="stdafx.h" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestObjectPool.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="MemoryPool.h" />
+    <ClInclude Include="ObjectPool.h" />
+    <ClInclude Include="PacketPool.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
